@@ -1,0 +1,12 @@
+.justification-box-container {
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.justification-box-btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

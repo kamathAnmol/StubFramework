@@ -1,2 +1,3 @@
-# stub-framework
-Stub Framework for all Framework projects
+# porter-framework
+
+Standalone Porter's Five forces Framework
