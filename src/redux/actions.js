@@ -3,6 +3,7 @@ import {
   ADD_ACTIVE_SESSION_ID,
   CREATE_FEATURE_INSTANCE,
   ADD_ACTIVE_FEATURE_INSTANCE,
+  ADD_ACTIVE_STEP_ID,
 } from "./actionTypes";
 
 const createSession = ({id, data}) => ({
@@ -32,9 +33,15 @@ const addActiveFeatureInstanceId = ({sessionId, featureInstanceId}) => ({
   payload: {id: {session: sessionId, featureInstance: featureInstanceId}},
 });
 
+const addActiveStepId = (data, context) => ({
+  type: ADD_ACTIVE_STEP_ID,
+  payload: {data, context},
+});
+
 export {
   createSession,
   addActiveSessionId,
   createFeatureInstance,
   addActiveFeatureInstanceId,
+  addActiveStepId,
 };

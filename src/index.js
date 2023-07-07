@@ -8,15 +8,9 @@ import App from "./App";
 const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
-const mapStateToProps = (states) => {
+const mapStateToProps = (state) => {
   return {
-    data: {appStates: states},
-    metadata: {},
-    customization: {},
-    configuration: {},
-    contextManager: {
-      context: {},
-    },
+    data: {state},
   };
 };
 
