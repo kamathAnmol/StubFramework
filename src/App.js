@@ -275,24 +275,26 @@ function App({data, metadata, configuration, customisation, contextManager}) {
 
   if (featureInstanceIsPresent) {
     return (
-      <Container fluid>
-        <Porter
-          data={{
-            appStates:
-              data.state.all_sessions[sessionId].domain.live_data
-                .all_feature_instances[featureInstanceId],
-          }}
-          metadata={metadata}
-          configuration={{workflow: "creation"}}
-          customisation={customisation}
-          contextManager={{
-            context: {
-              sessionId: sessionId || null,
-              featureInstanceId: featureInstanceId || null,
-            },
-          }}
-        />
-      </Container>
+      <div data-testid="app-component">
+        <Container fluid>
+          <Porter
+            data={{
+              appStates:
+                data.state.all_sessions[sessionId].domain.live_data
+                  .all_feature_instances[featureInstanceId],
+            }}
+            metadata={metadata}
+            configuration={{workflow: "creation"}}
+            customisation={customisation}
+            contextManager={{
+              context: {
+                sessionId: sessionId || null,
+                featureInstanceId: featureInstanceId || null,
+              },
+            }}
+          />
+        </Container>
+      </div>
     );
   }
 }

@@ -9,6 +9,8 @@ function Porter({
   configuration,
   contextManager,
 }) {
+  console.log(data, metadata, customisation, configuration, contextManager);
+
   const title =
     data.appStates.feature_instance_data.framework_metadata.framework_name;
   const workflow = configuration.workflow;
@@ -29,10 +31,6 @@ function Porter({
         }}
       />
     );
-    // }
-    // if (workflow === "operation") {
-    //   return <OperationWorkflow title={title} />;
-    // }
   }
 }
 
