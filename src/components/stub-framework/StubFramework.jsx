@@ -1,18 +1,30 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CreationWorkflow from "../commons/workflow-templates/creation";
 import OperationWorkflow from "../commons/workflow-templates/operation";
+import {addInstanceType} from "../../redux/actions";
+import {useDispatch} from "react-redux";
 
-function Porter({
+function StubFramework({
   data,
   metadata,
   customisation,
   configuration,
   contextManager,
 }) {
+  const dispatch = useDispatch();
   const title =
     data.appStates.feature_instance_data.framework_metadata.framework_name;
   const workflow = configuration.workflow;
 
+  useEffect(() => {
+    dispatch(
+      addInstanceType({
+        sessionId: contextManager.context.sessionId,
+        featureInstanceId: contextManager.context.featureInstanceId,
+        instanceType: configuration.workflow,
+      })
+    );
+  }, [workflow]);
   if (workflow === "creation") {
     return (
       <CreationWorkflow
@@ -50,4 +62,4 @@ function Porter({
   }
 }
 
-export default Porter;
+export default StubFramework;
