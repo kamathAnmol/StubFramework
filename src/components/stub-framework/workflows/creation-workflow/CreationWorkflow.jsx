@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import Container from "react-bootstrap/Container";
 import StepZilla from "react-stepzilla";
-import Card from "../../card";
+import Card from "../../../commons/card";
 
 import Stage1 from "../../../stub-framework/workflows/creation-workflow/stage-1/Stage1";
 import Stage2 from "../../../stub-framework/workflows/creation-workflow/stage-2/Stage2";

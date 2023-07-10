@@ -2,7 +2,7 @@ import React from "react";
 import "./OperationWorkflow.css";
 import {useState} from "react";
 import Container from "react-bootstrap/Container";
-import Card from "../../card";
+import Card from "../../../commons/card";
 import ToggleButton from "../../../commons/toggle-button";
 
 // import Gallery from "../../../commons/gallery";

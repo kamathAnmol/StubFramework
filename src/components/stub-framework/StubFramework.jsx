@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
-import CreationWorkflow from "../commons/workflow-templates/creation";
-import OperationWorkflow from "../commons/workflow-templates/operation";
+import CreationWorkflow from "./workflows/creation-workflow";
+import OperationWorkflow from "./workflows/operation-workflow";
 import {addInstanceType} from "../../redux/actions";
 import {useDispatch} from "react-redux";
 
