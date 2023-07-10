@@ -4,6 +4,8 @@ import {
   CREATE_FEATURE_INSTANCE,
   ADD_ACTIVE_FEATURE_INSTANCE,
   ADD_ACTIVE_STEP_ID,
+  ADD_ACTIVE_STAGE_ID,
+  ADD_INSTANCE_TYPE,
 } from "./actionTypes";
 
 const createSession = ({id, data}) => ({
@@ -33,8 +35,24 @@ const addActiveFeatureInstanceId = ({sessionId, featureInstanceId}) => ({
   payload: {id: {session: sessionId, featureInstance: featureInstanceId}},
 });
 
+const addInstanceType = ({sessionId, featureInstanceId, instanceType}) => ({
+  type: ADD_INSTANCE_TYPE,
+  payload: {
+    id: {
+      session: sessionId,
+      featureInstance: featureInstanceId,
+    },
+    data: instanceType,
+  },
+});
+
 const addActiveStepId = (data, context) => ({
   type: ADD_ACTIVE_STEP_ID,
+  payload: {data, context},
+});
+
+const addActiveStageId = (data, context) => ({
+  type: ADD_ACTIVE_STAGE_ID,
   payload: {data, context},
 });
 
@@ -43,5 +61,7 @@ export {
   addActiveSessionId,
   createFeatureInstance,
   addActiveFeatureInstanceId,
+  addInstanceType,
+  addActiveStageId,
   addActiveStepId,
 };

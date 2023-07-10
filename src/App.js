@@ -8,9 +8,9 @@ import {
   addActiveFeatureInstanceId,
 } from "./redux/actions";
 import {v4 as uuidv4} from "uuid";
-import Porter from "./components/porter";
+import StubFramework from "./components/stub-framework/";
 import sessionData from "./SessionData";
-import PorterFeatureInstanceData from "./components/porter/PorterFeatureInstanceData";
+import StubFrameworkFeatureInstanceData from "./components/stub-framework/StubFrameworkFeatureInstanceData";
 
 function App({data, metadata, configuration, customisation, contextManager}) {
   const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function App({data, metadata, configuration, customisation, contextManager}) {
         .active_feature_instance_id !== "";
   }
 
-  const featureInstanceData = PorterFeatureInstanceData;
+  const featureInstanceData = StubFrameworkFeatureInstanceData;
 
   useEffect(() => {
     if (!isMounted.current) {
@@ -64,7 +64,7 @@ function App({data, metadata, configuration, customisation, contextManager}) {
   if (featureInstanceIsPresent) {
     return (
       <Container fluid>
-        <Porter
+        <StubFramework
           data={{
             appStates:
               data.state.all_sessions[sessionId].domain.live_data

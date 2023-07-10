@@ -4,7 +4,9 @@ import {
   ADD_ACTIVE_SESSION_ID,
   CREATE_FEATURE_INSTANCE,
   ADD_ACTIVE_FEATURE_INSTANCE,
+  ADD_INSTANCE_TYPE,
   ADD_ACTIVE_STEP_ID,
+  ADD_ACTIVE_STAGE_ID,
 } from "./actionTypes";
 
 const rootReducer = (state = {}, action) => {
@@ -34,6 +36,26 @@ const rootReducer = (state = {}, action) => {
           action.payload.id.session
         ].domain.live_data.domain_scratchpad.active_feature_instance_id =
           action.payload.id.featureInstance;
+      });
+
+    case ADD_INSTANCE_TYPE:
+      return produce(state, (draftState) => {
+        draftState.all_sessions[
+          action.payload.id.session
+        ].domain.live_data.all_feature_instances[
+          action.payload.id.featureInstance
+        ].feature_instance_data.framework_metadata.instance_type =
+          action.payload.data;
+      });
+
+    case ADD_ACTIVE_STAGE_ID:
+      const {stageSessionId, stageFeatureId, stageId} = action.payload;
+      return produce(state, (draftState) => {
+        draftState.all_sessions[
+          stageSessionId
+        ].domain.live_data.all_feature_instances[
+          stageFeatureId
+        ].feature_instance_scratchpad.active_stage_id = stageId;
       });
 
     case ADD_ACTIVE_STEP_ID: {

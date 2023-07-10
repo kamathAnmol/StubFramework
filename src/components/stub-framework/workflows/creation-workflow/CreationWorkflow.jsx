@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import Container from "react-bootstrap/Container";
 import StepZilla from "react-stepzilla";
-import Card from "../../card";
+import Card from "../../../commons/card";
 
-import Stage1 from "../../../porter/workflows/creation-workflow/stage-1/Stage1";
-import Stage2 from "../../../porter/workflows/creation-workflow/stage-2/Stage2";
-import Stage3 from "../../../porter/workflows/creation-workflow/stage-3/Stage3";
+import Stage1 from "../../../stub-framework/workflows/creation-workflow/stage-1/Stage1";
+import Stage2 from "../../../stub-framework/workflows/creation-workflow/stage-2/Stage2";
+import Stage3 from "../../../stub-framework/workflows/creation-workflow/stage-3/Stage3";
 import {useDispatch} from "react-redux";
-
+// import {addActiveStageId} from "../../../../redux/actions"
 function CreationWorkflow({
   data,
   metadata,

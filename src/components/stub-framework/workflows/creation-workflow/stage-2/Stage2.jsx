@@ -51,7 +51,6 @@ function Stage2({
     {
       name: "STEP 2 : PUBLISH FRAMEWORK",
       component: (
-        // <></>
         <Step2
           data={{appStates: values[1].step_data}}
           metadata={{title: ""}}
@@ -71,7 +70,6 @@ function Stage2({
     {
       name: "STEP 2 : INVITE PATRONS",
       component: (
-        // <></>
         <Step3
           data={{appStates: values[2].step_data}}
           metadata={{title: ""}}
