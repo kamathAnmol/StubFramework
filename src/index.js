@@ -9,10 +9,11 @@ const rootElement = document.getElementById("root");
 const root = createRoot(rootElement);
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     data: {state},
     metadata: {},
-    configuration: {workflow: "operation"},
+    configuration: {workflow: "creation"},
     customisation: {},
     contextManager: {},
   };

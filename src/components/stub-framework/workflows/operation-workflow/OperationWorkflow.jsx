@@ -5,11 +5,6 @@ import Container from "react-bootstrap/Container";
 import Card from "../../../commons/card";
 import ToggleButton from "../../../commons/toggle-button";
 
-// import Gallery from "../../../commons/gallery";
-
-// import InputMode from "../../../porter/workflows/operation-workflow/input-mode";
-// import OutputMode from "../../../porter/workflows/operation-workflow/output-mode";
-
 function OperationWorkflow({sendF, dispatchF, logF, ...props}) {
   const label1 = {on: "Interaction", off: "Background"};
   const label2 = {on: "Doing", off: "Learning"};
