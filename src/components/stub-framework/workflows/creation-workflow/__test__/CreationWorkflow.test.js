@@ -2,15 +2,14 @@ import React from "react";
 import {render, screen} from "@testing-library/react";
 import CreationWorkflow from "../CreationWorkflow";
 import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
+import {configureStore} from "@reduxjs/toolkit";
+
 import "@testing-library/jest-dom/extend-expect";
 
 import rootReducer from "../../../../../redux/rootReducer";
 import mockPreloadedState from "../../../__test__/MockPreloadedStates";
 describe("CreationWorkflow", () => {
-  const mockStore = configureStore([]);
-
-  const store = mockStore({
+  const store = configureStore({
     reducer: rootReducer,
     preloadedState: mockPreloadedState,
   });
@@ -83,7 +82,6 @@ describe("CreationWorkflow", () => {
       </Provider>
     );
 
-    // Assert that all three stages are rendered
     expect(
       screen.getByText("STAGE 1 : Define Framework Parameters")
     ).toBeInTheDocument();
