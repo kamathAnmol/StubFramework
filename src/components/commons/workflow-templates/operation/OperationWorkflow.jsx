@@ -5,66 +5,36 @@ import Container from "react-bootstrap/Container";
 import Card from "../../card";
 import ToggleButton from "../../../commons/toggle-button";
 
-import Gallery from "../../../commons/gallery";
+// import Gallery from "../../../commons/gallery";
 
-import InputMode from "../../../porter/workflows/operation-workflow/input-mode";
-import OutputMode from "../../../porter/workflows/operation-workflow/output-mode";
-
-// import pdfPath from "../../../../assets/media/pdfs/se.pdf";
-// import imagePath from "../../../../assets/media/images/image.png";
-// import ytThumbnail from "../../../../assets/media/thumbnails/risk.png";
-// import localThumbnail from "../../../../assets/media/thumbnails/platform.png";
-
-// const contents = [
-//   {
-//     type: "video/mp4",
-//     src: "https://youtu.be/qHCG6j-ZRgU",
-//     thumbnail: ytThumbnail,
-//     title: "Assessing Architectural Risk - Part 1",
-//     description: "Lesson by Mark Richards on Assessing Architectural Risk",
-//   },
-//   {
-//     type: "image",
-//     src: imagePath,
-//     thumbnail: "",
-//     title: "Screenplay flow",
-//     description: "Explains flow of a script",
-//   },
-//   {
-//     type: "video/embedded",
-//     src: "https://drive.google.com/file/d/1pHAqoFropQedwuKXZXbG7cGy5EPjdonz/preview",
-//     thumbnail: localThumbnail,
-//     title: "Platform",
-//     description:
-//       "Factor level video, describes Platform from Railway Station example",
-//   },
-//   {
-//     type: "pdf",
-//     src: pdfPath,
-//     thumbnail: "",
-//     title: "Software Design Guidelines",
-//     description:
-//       "useful software deisng principles that helps you in improving your software designs",
-//   },
-// ];
+// import InputMode from "../../../porter/workflows/operation-workflow/input-mode";
+// import OutputMode from "../../../porter/workflows/operation-workflow/output-mode";
 
 function OperationWorkflow({sendF, dispatchF, logF, ...props}) {
-  const label1 = {on: "Doing", off: "Learning"};
+  const label1 = {on: "Interaction", off: "Background"};
+  const label2 = {on: "Doing", off: "Learning"};
+  const label3 = {on: "Output", off: "Input"};
 
   const [mode1, setMode1] = useState(label1.off);
+  const [mode2, setMode2] = useState(label2.off);
+  const [mode3, setMode3] = useState(label3.off);
+
   function handleToggle1(state) {
     if (state) {
       setMode1(label1.on);
     } else setMode1(label1.off);
   }
 
-  const label2 = {on: "Output", off: "Input"};
-
-  const [mode2, setMode2] = useState(label2.off);
-  function handleToggle1(state) {
+  function handleToggle2(state) {
     if (state) {
-      setMode1(label2.on);
-    } else setMode1(label2.off);
+      setMode2(label2.on);
+    } else setMode2(label2.off);
+  }
+
+  function handleToggle3(state) {
+    if (state) {
+      setMode3(label3.on);
+    } else setMode3(label3.off);
   }
 
   return (
@@ -82,16 +52,23 @@ function OperationWorkflow({sendF, dispatchF, logF, ...props}) {
               <ToggleButton label={label1} sendF={handleToggle1} />
             </div>
 
-            {mode1 === "Doing" ? (
+            {mode1 === "Interaction" ? (
               <>
                 <div className="toggle-container">
                   <ToggleButton label={label2} sendF={handleToggle2} />
                 </div>
-                {mode2 == "Output" ? <OutputMode /> : <InputMode />}
+                {mode2 === "Doing" ? (
+                  <>
+                    <div className="toggle-container">
+                      <ToggleButton label={label3} sendF={handleToggle3} />
+                    </div>
+                  </>
+                ) : (
+                  <></>
+                )}
               </>
             ) : (
-              <></>
-              // <Gallery contents={contents} />
+              <>{/* <Gallery contents={contents} /> */}</>
             )}
           </>
         }

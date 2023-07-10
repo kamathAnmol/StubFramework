@@ -11,6 +11,10 @@ const root = createRoot(rootElement);
 const mapStateToProps = (state) => {
   return {
     data: {state},
+    metadata: {},
+    configuration: {workflow: "operation"},
+    customisation: {},
+    contextManager: {},
   };
 };
 
