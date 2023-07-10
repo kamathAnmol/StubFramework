@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
   return {
     data: {state},
     metadata: {},
-    configuration: {workflow: "creation"},
+    configuration: {workflow: "operation"},
     customisation: {},
     contextManager: {},
   };
