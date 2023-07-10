@@ -1,16 +1,9 @@
 import React from "react";
-import {createRoot} from "react-dom/client";
-import {render, screen} from "@testing-library/react";
-import {Provider, connect} from "react-redux";
-import App from "../App";
-import {store} from "../redux/store";
-import "@testing-library/jest-dom/extend-expect";
+import {render} from "@testing-library/react";
 import {act} from "react-dom/test-utils";
-
-const rootElement = document.createElement("div");
-rootElement.id = "root";
-document.body.appendChild(rootElement);
-const root = createRoot(rootElement);
+import {Provider, connect} from "react-redux";
+import {store} from "../redux/store";
+import App from "../App";
 
 const mapStateToProps = (state) => {
   return {
@@ -27,7 +20,7 @@ const ConnectedApp = connect(mapStateToProps)(App);
 describe("App", () => {
   it("renders without errors", () => {
     act(() => {
-      root.render(
+      render(
         <React.StrictMode>
           <Provider store={store}>
             <ConnectedApp />
@@ -35,6 +28,5 @@ describe("App", () => {
         </React.StrictMode>
       );
     });
-    expect(screen.queryByTestId("porter-component")).toBeDefined();
   });
 });
