@@ -20,9 +20,9 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react"],
-  "rules": {
-    "react/jsx-uses-react": "on",
-    "react/react-in-jsx-scope": "on"
-  }
+  "plugins": ["react"]
+  // "rules": {
+  //   "react/jsx-uses-react": "on",
+  //   "react/react-in-jsx-scope": "on"
+  // }
 }

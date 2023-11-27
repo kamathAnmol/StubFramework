@@ -7,56 +7,80 @@ import {
   ADD_INSTANCE_TYPE,
   ADD_ACTIVE_STEP_ID,
   ADD_ACTIVE_STAGE_ID,
+  CURRENT_STEP,
+  IS_STEP_COMPLETE,
 } from "./actionTypes";
 
 const rootReducer = (state = {}, action) => {
   switch (action.type) {
-    case CREATE_SESSION:
-      return produce(state, (draftState) => {
-        draftState.all_sessions[action.payload.id] = action.payload.data;
-      });
+    case CREATE_SESSION: {
+      const {data, context} = action.payload;
 
-    case ADD_ACTIVE_SESSION_ID:
       return produce(state, (draftState) => {
-        draftState.global_scratchpad.active_session_id = action.payload.id;
+        draftState.all_sessions[data.sessionId] = data.sessionData;
       });
+    }
 
-    case CREATE_FEATURE_INSTANCE:
+    case ADD_ACTIVE_SESSION_ID: {
+      const {data, context} = action.payload;
+      return produce(state, (draftState) => {
+        draftState.global_scratchpad.active_session_id = data.sessionId;
+      });
+    }
+
+    case CURRENT_STEP: {
+      const {data} = action.payload;
+      return produce(state, (draftState) => {
+        draftState.global_scratchpad.current_stage = data.step;
+      });
+    }
+
+    case CREATE_FEATURE_INSTANCE: {
+      const {data, context} = action.payload;
+
       return produce(state, (draftState) => {
         draftState.all_sessions[
-          action.payload.id.session
-        ].domain.live_data.all_feature_instances[
-          action.payload.id.featureInstance
-        ] = action.payload.data;
+          context.sessionId
+        ].domain.live_data.all_feature_instances[data.featureInstanceId] =
+          data.featureInstanceData;
       });
+    }
 
-    case ADD_ACTIVE_FEATURE_INSTANCE:
+    case ADD_ACTIVE_FEATURE_INSTANCE: {
+      const {data, context} = action.payload;
+
       return produce(state, (draftState) => {
         draftState.all_sessions[
-          action.payload.id.session
+          context.sessionId
         ].domain.live_data.domain_scratchpad.active_feature_instance_id =
-          action.payload.id.featureInstance;
+          data.featureInstanceId;
       });
+    }
 
-    case ADD_INSTANCE_TYPE:
+    case ADD_INSTANCE_TYPE: {
+      const {data, context} = action.payload;
+
       return produce(state, (draftState) => {
         draftState.all_sessions[
-          action.payload.id.session
+          context.sessionId
         ].domain.live_data.all_feature_instances[
-          action.payload.id.featureInstance
+          context.featureInstanceId
         ].feature_instance_data.framework_metadata.instance_type =
-          action.payload.data;
+          data.instanceType;
       });
+    }
 
-    case ADD_ACTIVE_STAGE_ID:
-      const {stageSessionId, stageFeatureId, stageId} = action.payload;
+    case ADD_ACTIVE_STAGE_ID: {
+      const {data, context} = action.payload;
+
       return produce(state, (draftState) => {
         draftState.all_sessions[
-          stageSessionId
+          context.sessionId
         ].domain.live_data.all_feature_instances[
-          stageFeatureId
-        ].feature_instance_scratchpad.active_stage_id = stageId;
+          context.featureInstanceId
+        ].feature_instance_scratchpad.active_stage_id = data.stageId;
       });
+    }
 
     case ADD_ACTIVE_STEP_ID: {
       const {data, context} = action.payload;
@@ -68,9 +92,24 @@ const rootReducer = (state = {}, action) => {
           context.featureInstanceId
         ].feature_instance_data.framework_data[
           context.stageId
-        ].stage_scratchpad.active_step_id = data;
+        ].stage_scratchpad.active_step_id = data.stepId;
       });
     }
+
+    case IS_STEP_COMPLETE: {
+      const {data, context} = action.payload;
+      console.log(context);
+      return produce(state, (draftState) => {
+        draftState.all_sessions[
+          context.sessionId
+        ].domain.live_data.all_feature_instances[
+          context.featureInstanceId
+        ].feature_instance_data.framework_data[context.stageId].stage_data[
+          context.stepId
+        ].step_data.flag.complete = data.status;
+      });
+    }
+
 
     default:
       return state;

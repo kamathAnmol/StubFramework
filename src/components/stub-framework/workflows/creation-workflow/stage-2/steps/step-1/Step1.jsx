@@ -1,15 +1,7 @@
-import React from "react";
-import {useDispatch} from "react-redux";
-import Container from "react-bootstrap/Container";
+import React, {useRef, useEffect} from "react";
 
-function Step1({data, metadata, customisation, configuration, contextManager}) {
-  const dispatch = useDispatch();
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  return <Container fluid></Container>;
+function Step1({data, metadata, configuration, customisation, contextManager}) {
+  return (<></>);
 }
 
 export default Step1;
