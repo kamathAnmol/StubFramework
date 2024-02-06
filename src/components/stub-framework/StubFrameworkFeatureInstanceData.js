@@ -11,8 +11,8 @@ const StubFrameworkFeatureInstanceData = {
     },
     feature_instance_data: {
       framework_metadata: {
-        framework_name: "",
-        framework_label: "",
+        framework_name: "stub_framework",
+        framework_label: "Stub Framework",
         framework_description: "",
         workflow_type: "creation",
       },
@@ -67,12 +67,14 @@ const StubFrameworkFeatureInstanceData = {
             },
             [uuidv4()]: {
               step_metadata: {
-                step_name: "",
-                step_label: "",
+                step_name: "publish_framework",
+                step_label: "Publish Framework",
                 step_description: "",
                 step_id: 1,
               },
-              step_data: { flag: { complete: false } },
+              step_data: { 
+                title:"",
+                flag: { complete: false } },
             },
             [uuidv4()]: {
               step_metadata: {
@@ -122,8 +124,8 @@ const StubFrameworkFeatureInstanceData = {
     },
     feature_instance_data: {
       framework_metadata: {
-        framework_name: "",
-        framework_label: "",
+        framework_name: "stub_framework",
+        framework_label: "Stub Framework",
         framework_description: "",
         workflow_type: "operation",
       },

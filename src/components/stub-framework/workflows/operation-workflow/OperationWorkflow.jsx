@@ -127,12 +127,12 @@ function OperationWorkflow({
                       </>
                     ) : (
                       <>
-                        <div className="toggle-container">
+                        {/* <div className="toggle-container">
                           <ToggleButton
                             text={{active: label4.on, inactive: label4.off}}
                             status={(active) => handleToggle4(active)}
                           />
-                        </div>
+                        </div> */}
                         
 
                         <OutputMode

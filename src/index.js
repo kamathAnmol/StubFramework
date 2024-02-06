@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
     data: {state},
     metadata: {},
     // configuration: {workflow: "operation"},
-    configuration: {workflow: "creation"},
+    configuration: {workflow: "operation"},
     customisation: {},
     contextManager: {
       sendF: SendRequest,
@@ -72,7 +72,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-localStorage.setItem("activePursuit", "2");
+localStorage.setItem("activePursuit", "for-testing-comments");
 
 const ConnectedApp = connect(mapStateToProps)(App);
 root.render(

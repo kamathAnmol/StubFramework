@@ -119,6 +119,10 @@ function App({data, metadata, configuration, customisation, contextManager}) {
     console.log("🚀 ~ file: App.js:94 ~ App ~ status:", status);
   };
 
+  const handleLaunchPursuit = (status) => {
+    console.log(status);
+  };
+
   if (featureInstanceIsPresent) {
     return (
       <Container fluid>
@@ -132,9 +136,7 @@ function App({data, metadata, configuration, customisation, contextManager}) {
             ...metadata,
             frameworkName: frameworkName,
             handleExit: handleExit,
-            handleLaunchPursuit: (state) => {
-              console.log(state);
-            },
+            handleLaunchPursuit: handleLaunchPursuit,
           }}
           configuration={{...configuration, skipValidation: true}}
           customisation={customisation}
